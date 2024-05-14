@@ -1,5 +1,7 @@
 # AppointmentApp
-Built a simple UI web appointment application using Angular Framework where user can create, display and delete appointments.
+Built a simple UI web appointment application using Angular Framework where user can create, view, update and delete appointments.
+
+This project is hosted on github pages : https://shikha-shetty.github.io/appointment-manager/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
