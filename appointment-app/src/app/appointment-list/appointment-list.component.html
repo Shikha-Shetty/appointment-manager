@@ -1,1 +1,79 @@
-<p>appointment-list works!</p>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Appointment Management Application</h1>
+            <p class="lead">Built a simple UI web appointment application using Angular Framework where user can create,
+                view, update and delete appointments.</p>
+        </div>
+    </div>
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center">Create Appointment</h2>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <input class="form-control" [(ngModel)]="newAppointmentPerson"
+                        placeholder="Appointment - By the name">
+                </div>
+                <div class="col-md-5">
+                    <input class="form-control" [(ngModel)]="newAppointmentTitle" placeholder="Appointment description">
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" [(ngModel)]="newAppointmentDate" type="datetime-local"
+                        placeholder="Appointment date">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <button class="btn btn-lg btn-block btn-primary" (click)="addAppointment()">Add Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-5">
+        <div class="card-body">
+            <h2 class="text-center">Appointments List</h2>
+            <div class="alert alert-info" role="alert" *ngIf="appointments.length==0">
+                Currently, there are no appointments present in the system!
+            </div>
+            <ul class="list-group mt-3">
+                <div *ngFor="let appointment of appointments; index as i">
+                    <div class="alert alert-success" role="alert" *ngIf="updateSuccessful === i">
+                        Your appointment with {{appointment.person}} is updated!
+                    </div>
+                    <li class="list-group-item d-flex justify-content-between">
+                        "{{appointment.title}}" with {{appointment.person}} on {{appointment.date | date:'short'}}
+                        <div>
+                            <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+                            <button class="btn btn-dark" (click)="updateAppointment(i)">Update</button>
+                        </div>
+                    </li>
+                    <div class="row mt-3 mb-5" *ngIf="selectedItemIndex === i">
+                        <p class="text-center">Update this appointment with {{appointment.person}}</p>
+                        <div class="col-md-4">
+                            <input class="form-control" [(ngModel)]="updatedAppointmentPerson"
+                                placeholder="Appointment - By the name">
+                        </div>
+                        <div class="col-md-5">
+                            <input class="form-control" [(ngModel)]="updatedAppointmentTitle"
+                                placeholder="Appointment description">
+                        </div>
+                        <div class="col-md-3">
+                            <input class="form-control" [(ngModel)]="updatedAppointmentDate" type="datetime-local"
+                                placeholder="Appointment date">
+                        </div>
+                        <div class="btn-group mt-2 justify-content-end" role="group">
+                            <button type="button" class="btn btn-success" (click)="saveAppointment(i)">Save</button>
+                            <button type="button" class="btn btn-light" (click)="cancelUpdate(i)">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
